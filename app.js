@@ -11,10 +11,12 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+//empty array to push employee info to 
 const roster =[]; 
 
+//function to handle inquirer 
 function employeeData() {
-    console.log("Initializing Team Contact Generator..."); 
+    console.log("Team Contact Generator processing..."); 
    inquirer.prompt([
        {
         type: "list", 
@@ -26,6 +28,7 @@ function employeeData() {
         type: "input", 
         name: "name", 
         message: "What is the employee's name?",
+        //boolean function that checks to see if the q should be asked if "Exit/Save" chosen
        when: function(response) {
            return(response.role !== "Exit/Save")
        }
@@ -34,6 +37,7 @@ function employeeData() {
         type: "input", 
         name: "id", 
         message: "What is the employee's id number?",
+        //boolean function that checks to see if the q should be asked if "Exit/Save" chosen
         when: function(response) {
             return(response.role !== "Exit/Save")
         }
@@ -42,6 +46,7 @@ function employeeData() {
         type: "input", 
         name: "email", 
         message: "What is the employee's email?",
+        //boolean function that checks to see if the q should be asked if "Exit/Save" chosen
         when: function(response) {
             return(response.role !== "Exit/Save")
         }
@@ -50,6 +55,7 @@ function employeeData() {
         type: "input", 
         name: "github", 
         message: "What is the Engineer's gitHub name?",
+        //boolean function that checks to see if the q is applicable if "Engineer" chosen
         when: function(response) {
             return(response.role === "Engineer")
         }
@@ -58,6 +64,7 @@ function employeeData() {
         type: "input", 
         name: "school", 
         message: "What school does the Intern attend?",
+        //boolean function that checks to see if the q is applicable if "Intern" chosen
         when: function(response) {
             return(response.role === "Intern")
         }
@@ -66,31 +73,43 @@ function employeeData() {
         type: "input", 
         name: "officeNumber", 
         message: "What is the Manager's office number?",
+        //boolean function that checks to see if the q is applicable if "Manager" chosen
         when: function(response) {
             return(response.role === "Manager")
         }
        }, 
    ]).then(function (response) {
-    console.log(this.response=response); 
     if(response.role === "Manager") {
+        //if role is mgr, it's a new instantation of Manager with the associated arguments
      const manager = new Manager(response.name, response.id, response.email, response.officeNumber); 
+     //pushes new instance to roster array
      roster.push(manager); 
+     //calls the function again to add another member or exit
      employeeData();
     } else if (response.role === "Engineer") {
+        //if role is engineer, it's a new instantation of Engineer with the associated arguments
         const engineer = new Engineer(response.name, response.id, response.email, response.github); 
+        //pushes new instance to roster array
         roster.push(engineer); 
+        //calls the function again to add another member or exit
         employeeData();
     } else if (response.role === "Intern") {
+        //if role is intern, it's a new instantation of Intern with the associated arguments
         const intern = new Intern(response.name, response.id, response.email, response.school); 
+        //pushes new instance to roster array
         roster.push(intern); 
+        //calls the function again to add another member or exit
         employeeData();
     } else {
+        //on choosing Exit/Save, gives feedback to let user know what's happening
         console.log("Saving data...")
     }
 
    }); 
 
 }
+
+// console.log(render(roster)); 
 
 employeeData(); 
 
