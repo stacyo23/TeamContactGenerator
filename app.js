@@ -103,6 +103,7 @@ function employeeData() {
     } else {
         //on choosing Exit/Save, gives feedback to let user know what's happening
         console.log("Saving data...")
+        //calls create HTML function
         createHTML(); 
         }
 
@@ -111,14 +112,16 @@ function employeeData() {
 
 }
 
-// console.log(render(roster)); 
-
+// initiates prompts
 employeeData(); 
 
 
 function createHTML(){
+    //checks to see if an output folder already exists...if not, it makes one
     if(fs.existsSync("output") || fs.mkdirSync("output")); 
+    //writes the HTML code to the HTML file
     fs.writeFileSync(outputPath, render(roster), "utf-8");
+    //added a comment to make it a little user-friendly
     console.log("Generating team contacts..."); 
 }
 // Write code to use inquirer to gather information about the development team members,
@@ -136,7 +139,7 @@ function createHTML(){
 
 // HINT: each employee type (manager, engineer, or intern) has slightly different
 // information; write your code to ask different questions via inquirer depending on
-// employee type.
+// employee type
 
 // HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
 // and Intern classes should all extend from a class named Employee; see the directions
