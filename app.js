@@ -103,7 +103,9 @@ function employeeData() {
     } else {
         //on choosing Exit/Save, gives feedback to let user know what's happening
         console.log("Saving data...")
-    }
+        createHTML(); 
+        }
+
 
    }); 
 
@@ -113,6 +115,12 @@ function employeeData() {
 
 employeeData(); 
 
+
+function createHTML(){
+    if(fs.existsSync("output") || fs.mkdirSync("output")); 
+    fs.writeFileSync(outputPath, render(roster), "utf-8");
+    console.log("Generating team contacts..."); 
+}
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
