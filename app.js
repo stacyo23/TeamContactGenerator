@@ -55,7 +55,7 @@ function employeeData() {
         type: "input", 
         name: "github", 
         message: "What is the Engineer's gitHub name?",
-        //boolean function that checks to see if the q is applicable if "Engineer" chosen
+        //boolean function that checks to see if the q is applicable when "Engineer" chosen
         when: function(response) {
             return(response.role === "Engineer")
         }
@@ -64,7 +64,7 @@ function employeeData() {
         type: "input", 
         name: "school", 
         message: "What school does the Intern attend?",
-        //boolean function that checks to see if the q is applicable if "Intern" chosen
+        //boolean function that checks to see if the q is applicable when "Intern" chosen
         when: function(response) {
             return(response.role === "Intern")
         }
