@@ -37,7 +37,7 @@ function employeeData() {
         type: "input", 
         name: "id", 
         message: "What is the employee's id number?",
-        //boolean function that checks to see if the q should be asked if "Exit/Save" chosen
+        //boolean function that tells it not to aks the question if "Exit/Save" chosen
         when: function(response) {
             return(response.role !== "Exit/Save")
         }
@@ -46,7 +46,7 @@ function employeeData() {
         type: "input", 
         name: "email", 
         message: "What is the employee's email?",
-        //boolean function that checks to see if the q should be asked if "Exit/Save" chosen
+        //boolean function that tells it not to aks the question if "Exit/Save" chosen
         when: function(response) {
             return(response.role !== "Exit/Save")
         }
@@ -55,7 +55,7 @@ function employeeData() {
         type: "input", 
         name: "github", 
         message: "What is the Engineer's gitHub name?",
-        //boolean function that checks to see if the q is applicable when "Engineer" chosen
+        //boolean function that only asks this question when "Engineer" chosen
         when: function(response) {
             return(response.role === "Engineer")
         }
@@ -64,7 +64,7 @@ function employeeData() {
         type: "input", 
         name: "school", 
         message: "What school does the Intern attend?",
-        //boolean function that checks to see if the q is applicable when "Intern" chosen
+        //boolean function that only asks this question when "Intern" chosen
         when: function(response) {
             return(response.role === "Intern")
         }
@@ -73,7 +73,7 @@ function employeeData() {
         type: "input", 
         name: "officeNumber", 
         message: "What is the Manager's office number?",
-        //boolean function that checks to see if the q is applicable if "Manager" chosen
+        //boolean function that only asks this question if "Manager" chosen
         when: function(response) {
             return(response.role === "Manager")
         }
