@@ -20,6 +20,9 @@ The application starts with a series of inquiries to build a team. Once the ques
 The application uses NodeJS, Inquirer, Jest, Javascript and Bootstrap.
 
 ## Demonstration
+![Demonstration](./TCG.gif)
 
-## Code Link
+ ## Contact
+  Please feel free to contact me at stacyo23@yahoo.com for questions or feedback. 
+  To see other projects, please visit https://github.com/stacyo23/.
 
